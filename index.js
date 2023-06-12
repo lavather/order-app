@@ -69,6 +69,7 @@ function CheckEmptyInputFields(x) {
 function checkInputs(){
     CheckEmptyInputFields(inputCardname)
     CheckEmptyInputFields(inputCardNumber)
+    CheckEmptyInputFields(inputCvv)
     CheckEmptyInputFields(inputName)
     CheckEmptyInputFields(inputStreet)
     CheckEmptyInputFields(inputPostcode)
