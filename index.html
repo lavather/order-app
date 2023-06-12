@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header>
+            <div class="color">
+                <div class="image-container">
+                    <img src="images/burger-main-image.jpg" class="header-image">
+                    <div class="header-text">
+                        <h1 class="header-h1">Jimmy's Diner</h1>
+                        <h3 class="header-h3">The best burgers and pizza in town!</h3>
+                    </div>
+                </div>
+                <div class="flex-content " id="flex-content"> <!--things gotta be put in here via javascript-->  
+                </div>
+                <div class="" id="display-order-box">
+                </div> 
+                <div class="total hidden" id="total-sum">
+                    <h2>Total Price</h2>
+                    <button class="confirm" id="complete-order-btn">Complete Order</button>   
+
+                </div>
+                <div class="modal shadow hidden" id="payment-modal">
+                    <h2 class="h2-payment">Enter Adress</h2>
+                    <button class="close-button" id="close-modal-btn">X</button>
+                    <input 
+                        type="text"
+                        placeholder="Enter your name"
+                        name="name"
+                        id="input-name"
+                    >
+                    <input 
+                        type="text"
+                        placeholder="Enter Street"
+                        name="name"
+                        id="input-street"
+                    >
+                    <input 
+                        type="text"
+                        placeholder="Enter your Postcode"
+                        name="name"
+                        id="input-postcode"
+                    >
+                    <input 
+                        type="text"
+                        placeholder="Enter Delivery Notes"
+                        name="name"
+                        id="input-instructions"
+                >
+                    <h2 class="h2-payment">Enter card details</h2>
+                    <input 
+                        type="text"
+                        placeholder="Enter Card Holder Name"
+                        name="name"
+                        id="input-cardname"
+                    >
+                    <input
+                        type="number"
+                        placeholder="Enter card number"
+                        name="card-number"
+                        id="input-card-number"
+                    >
+                    <input
+                        type="number"
+                        min="0"
+                        max="999"
+                        placeholder="CVV"
+                        name="CVV"
+                        id="input-cvv"
+                    > 
+                    <button class="confirm" id="complete-payment">Pay</button>
+                </div>
+                <div class="modal hidden" id="thank-you">
+                        <h1 class="h1-thanks">Thank you for your order!</h1>
+                </div>
+            </div>
+        </header>
+        <script src="index.js" type="module"></script>
+    </body>
+</html>
+

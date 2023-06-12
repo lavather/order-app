@@ -1,0 +1,11 @@
+enter adress
+> expand div to fit >>> no need, expands by itself, very nice
+
+pay button
+> check for empty fields
+> check for 3 digit cvv
+
+second modal window "thank you"
+> hide everything except header-image / text
+> use class color / flex content to display the order and a thank you
+
