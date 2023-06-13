@@ -1,31 +1,32 @@
 body {
-    width:60vw;
     margin: auto;
     font-family: 'Smythe', cursive;
     user-select:none;
 }
 
-.image-container{
+body, .header-image, .image-container{
     width:60vw;
-    height:25vh;
-    overflow:hidden;
-    position:relative;
     min-width:550px;
 }
 
+/* Constant Header section */
+
+.image-container{
+    position:relative;
+    height:25vh;
+    overflow:hidden;
+}
+
 .header-image{
-    width:60vw;
     height:167px;
     object-fit:cover;
     object-position:-30% 65%;
-    min-width:550px;
 }
 
 .header-text{
     position:absolute;
     top:1vh;
     left:4vw;
-    color:whitesmoke;
 }
 
 .header-h1{
@@ -35,22 +36,38 @@ body {
 .header-h3{
     font-size:22.4px;
     margin-top: -25px;
+}
+
+.header-text, .header-h3{
     color:whitesmoke;
 }
 
-.h1-thanks{
-    position:absolute;
-    color:red;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display:inline-block;
-    white-space: nowrap;
-}
+
+/* text */
 
 h3{
     font-size:16px;
     color:#8B8B8B;
+}
+
+.h3-added{
+    text-align: center;
+    padding-top:20px;
+    font-size:10px;
+}
+
+span{
+    font-size:100px;
+}
+
+.close-button, .h1-thanks{
+    color:red;
+}
+
+.h1-thanks{
+    position:absolute;
+    display:inline-block;
+    white-space: nowrap;
 }
 
 .h3-added{
@@ -88,7 +105,11 @@ h3{
     transform: translate(-50%, -50%);
     width: 90%; /* Adjust the width as needed */
     color:black;
-    
+}
+
+.flex-text{
+    width:30vw;
+    min-width: 300px;
 }
 
 .menu-point{
@@ -98,63 +119,12 @@ h3{
     min-width:500px;
 }
 
-
-span{
-    font-size:100px;
+.hidden{
+    display: none;
 }
 
-.flex-text{
-    width:30vw;
-    min-width: 300px;
-}
-
-.add-button{
-    position:absolute;
-    top:38%;
-    right:5%;
-    border:none;
-    border:1px solid #cac6c6;
-    border-radius: 50px;
-    background-color:transparent;
-    height:40px;
-    width:40px;
-    outline:none;
-    box-shadow:0;
-    color:grey;
-}
-
-.remove-button{
-    margin-right:10px;
-    border:none;
-    background:transparent;
-    font-size:10px;
-    padding-top:10px;
-}
-
-.close-button{
-    position:absolute;
-    top:1%;
-    right:1%;
-    border:none;
-    text-align:center;
-    border-radius: 50px;
-    background-color:transparent;
-    height:18px;
-    width:18px;
-    margin:auto;
-    outline:none;
-    box-shadow:0;
-    color:red;
-}
-
-.remove{
-    border:none;
-    background-color:transparent;
-    border-color:none;
-}
-
-button:active {
-    border-style: none;
+.no-pointer{
+    pointer-events:none;
 }
 
 .order-box{
@@ -168,15 +138,6 @@ button:active {
     color:black;    
 }
 
-.total{
-    position:absolute;
-    top:90%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    width:80%; /* Adjust the width as needed */
-    color:black;
-}
-
 .order-input{
     display:flex;
     justify-content:space-between;
@@ -187,16 +148,35 @@ button:active {
     flex:1;
 }
 
-input.input-empty{
-    border-color:red;
+.total{
+    position:absolute;
+    top:90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:80%; /* Adjust the width as needed */
+    color:rgb(8, 8, 8);
 }
 
-.hidden{
-    display: none;
+.modal, .h1-thanks {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-.no-pointer{
-    pointer-events:none;
+.modal{
+    position:absolute;
+    min-width:350px;
+    min-height:205px;
+    background-color:white;
+}
+
+.shadow{
+    box-shadow: 0 0px 60px rgba(0, 0, 0, 0.6);
+}
+
+.flex{
+    display:flex;
+    justify-content: space-between;
 }
 
 input{
@@ -207,12 +187,17 @@ input{
     padding-left:10px;
 }
 
+input.input-empty{
+    border-color:red;
+}
+
 .confirm{
     width:100%;
     border:none;
     padding:15px;
     margin:auto;
     background-color:#16DB99;
+    display:inline-block;
 }
 
 #complete-payment{
@@ -221,17 +206,48 @@ input{
     margin-bottom:3%;
 }
 
-.modal{
+/* buttons */
+
+.add-button{
     position:absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    min-width:350px;
-    min-height:205px;
-    background-color:white;
-    
+    top:38%;
+    right:5%;
+    border:none;
+    border:1px solid #cac6c6;
+    border-radius: 50px;
+    height:40px;
+    width:40px;
+    outline:none;
+    box-shadow:0;
+    color:grey;
 }
 
-.shadow{
-    box-shadow: 0 0px 60px rgba(0, 0, 0, 0.6);
+.remove-button{
+    margin-right:10px;
+    border:none;
+    font-size:10px;
+    padding-top:10px;
 }
+
+.close-button{
+    position:absolute;
+    top:1%;
+    right:1%;
+    border:none;
+    text-align:center;
+    border-radius: 50px;
+    height:18px;
+    width:18px;
+    margin:auto;
+    outline:none;
+    box-shadow:0;
+}
+
+.add-button, .remove-button, .close-button{
+    background-color: transparent;
+}
+
+button:active {
+    border-style: none;
+}
+
