@@ -9,3 +9,4 @@ second modal window "thank you"
 > hide everything except header-image / text
 > use class color / flex content to display the order and a thank you
 
+> forgot the total amount calculation
