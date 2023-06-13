@@ -1,7 +1,9 @@
 import {menuArray} from './data.js'
 
+//first load of tthe menu
 writeMenu()
 
+//declaration of all globally needed consts / lets
 const completeOrderBtn=document.getElementById("complete-order-btn")
 const closeModalBtn=document.getElementById("close-modal-btn")
 const completePayment=document.getElementById("complete-payment")
@@ -15,6 +17,7 @@ const inputCvv=document.getElementById("input-cvv")
 const orderarray=[]
 let renderedOrder=""
 
+//declaration eventlisteners
 window.addEventListener("click", function (e){
     const targetedItem = e.target
     if(e.target===completeOrderBtn){
@@ -53,67 +56,10 @@ window.addEventListener("input", function(event) {
         checkDigits()
     }
     CheckEmptyInputFields(inputField);
-});
+})
 
-function CheckEmptyInputFields(x) {
-    if (!x.value) {
-      x.classList.add("input-empty");
-      x.placeholder = "This field cannot be empty";
-    } else {
-        if (x===!inputCvv){
-            x.classList.remove("input-empty");
-        }
-    }
-}
 
-function checkInputs(){
-    CheckEmptyInputFields(inputCardname)
-    CheckEmptyInputFields(inputCardNumber)
-    CheckEmptyInputFields(inputCvv)
-    CheckEmptyInputFields(inputName)
-    CheckEmptyInputFields(inputStreet)
-    CheckEmptyInputFields(inputPostcode)
-}
-
-function checkDigits(){
-    if (inputCvv.value.length > 3) {
-        inputCvv.value = inputCvv.value.slice(0, 3)
-    } 
-    else if(inputCvv.value.length===3){
-        inputCvv.classList.remove("input-empty")
-    }
-    else if (inputCvv.value.length < 3){
-        inputCvv.classList.add("input-empty")
-    }       
-}
-
-function openModalPayment(){
-    document.getElementById("payment-modal").classList.toggle('hidden')
-    toggleNoPointers()
-}
-
-function closeModalWindow(){
-    toggleEmptyValueInput()
-    toggleNoPointers()
-    const paymentModal=document.getElementById("payment-modal").classList.toggle('hidden')
-}
-
-function toggleNoPointers(){
-    document.getElementById("display-order-box").classList.toggle('no-pointer') 
-    document.getElementById("flex-content").classList.toggle('no-pointer')
-    document.getElementById("complete-order-btn").classList.toggle('no-pointer')
-}
-
-function toggleEmptyValueInput(){
-    inputCardname.value=""
-    inputCardNumber.value=""
-    inputCvv.value=""
-    inputName.value=""
-    inputStreet.value=""
-    inputPostcode.value=""
-    inputInstructions.value=""
-}
-
+//functions in order of logical occurrence (to me)
 function writeMenu(){
     const flexContent=document.getElementById("flex-content")
 
@@ -167,6 +113,19 @@ function addFoodButton(x){
         document.getElementById("display-order-box").classList.toggle('hidden')
         
     }
+
+    calculateTotalSum()
+}
+
+function calculateTotalSum(){
+    let SummeItem=0
+    let totalSumme=0
+    const endSumme=document.getElementById("endsumme")
+    orderarray.forEach(function(preis){
+        SummeItem=parseInt(preis.added)*parseInt(preis.price)
+        totalSumme+=SummeItem
+    })
+    endSumme.textContent=`${totalSumme}€`
 }
 
 function renderOrder(){
@@ -178,9 +137,9 @@ function renderOrder(){
         `
         <div class="order-input">
             <h2>${item.name}</h2>
-            <h3 class="h3-added">${item.added}</h3>
             <button class="remove-button" data-remove=${item.id}>remove</button>
-            <h2 class="h2-added">${item.price}€</h2>
+            <h3 class="h3-added">${item.added}</h3>
+            <h2 class="h2-added">x ${item.price}€</h2>
         </div>
         `
     })
@@ -216,5 +175,66 @@ function removeItemfromOrder(x){
 
     renderOrder();
     
+}
+
+function openModalPayment(){
+    document.getElementById("payment-modal").classList.toggle('hidden')
+    toggleNoPointers()
+}
+
+function toggleNoPointers(){
+    document.getElementById("display-order-box").classList.toggle('no-pointer') 
+    document.getElementById("flex-content").classList.toggle('no-pointer')
+    document.getElementById("complete-order-btn").classList.toggle('no-pointer')
+}
+
+
+function closeModalWindow(){
+    toggleEmptyValueInput()
+    toggleNoPointers()
+    const paymentModal=document.getElementById("payment-modal").classList.toggle('hidden')
+}
+
+function toggleEmptyValueInput(){
+    inputCardname.value=""
+    inputCardNumber.value=""
+    inputCvv.value=""
+    inputName.value=""
+    inputStreet.value=""
+    inputPostcode.value=""
+    inputInstructions.value=""
+}
+
+function CheckEmptyInputFields(x) {
+    if (!x.value) {
+      x.classList.add("input-empty");
+      x.placeholder = "This field cannot be empty";
+    } 
+    else {
+        if (x !==inputCvv){
+            x.classList.remove("input-empty");
+        }
+    }
+}
+
+function checkInputs(){
+    CheckEmptyInputFields(inputCardname)
+    CheckEmptyInputFields(inputCardNumber)
+    CheckEmptyInputFields(inputCvv)
+    CheckEmptyInputFields(inputName)
+    CheckEmptyInputFields(inputStreet)
+    CheckEmptyInputFields(inputPostcode)
+}
+
+function checkDigits(){
+    if (inputCvv.value.length > 3) {
+        inputCvv.value = inputCvv.value.slice(0, 3)
+    } 
+    else if(inputCvv.value.length===3){
+        inputCvv.classList.remove("input-empty")
+    }
+    else if (inputCvv.value.length < 3){
+        inputCvv.classList.add("input-empty")
+    }       
 }
 
