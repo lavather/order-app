@@ -53,8 +53,12 @@ window.addEventListener("click", function (e){
 window.addEventListener("input", function(event) {
     const inputField = event.target;
     if (inputField===inputCvv){
-        checkDigits()
+        checkDigitsCvv()
     }
+    else if (inputField===inputCardNumber){
+        checkDigitsCardNumber()
+    }
+    
     CheckEmptyInputFields(inputField);
 })
 
@@ -71,7 +75,7 @@ function writeMenu(){
             <div class="flex-text">
                 <h2>${x.name}</h2>
                 <h3>${x.ingredients.join(', ')}</h3>
-                <h2>${x.price}</h2>
+                <h2>${x.price}€</h2>
             </div>
         <button class="add-button" id="${x.id}" data-add=${x.id}>+</button>
         </div>
@@ -226,7 +230,7 @@ function checkInputs(){
     CheckEmptyInputFields(inputPostcode)
 }
 
-function checkDigits(){
+function checkDigitsCvv(){
     if (inputCvv.value.length > 3) {
         inputCvv.value = inputCvv.value.slice(0, 3)
     } 
@@ -235,6 +239,14 @@ function checkDigits(){
     }
     else if (inputCvv.value.length < 3){
         inputCvv.classList.add("input-empty")
-    }       
+    } 
+     
 }
+
+function checkDigitsCardNumber(){
+    if(inputCardNumber.value.length>19){
+        inputCardNumber.value= inputCardNumber.value.slice(0, 19)
+    } 
+}
+
 
